@@ -32,8 +32,14 @@ import build from "./config/esbuild.defaults.js"
  * @typedef { import("esbuild").BuildOptions } BuildOptions
  * @type {BuildOptions}
  */
+// Use base_path for production builds, but not in development (watch mode)
+const isDevelopment = process.argv.includes("--watch") || process.env.NODE_ENV === "development"
+const publicPath = isDevelopment 
+  ? "/_bridgetown/static" 
+  : "/help-making-tax-digital/_bridgetown/static"
+
 const esbuildOptions = {
-  publicPath: "/help-making-tax-digital/_bridgetown/static",
+  publicPath: publicPath,
   plugins: [
     // add new plugins here...
   ],

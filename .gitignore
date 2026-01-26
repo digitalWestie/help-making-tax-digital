@@ -6,6 +6,8 @@ output
 
 # Project-specific
 resources/
+devnotes.md
+AGENTS.md
 
 # Dependency folders
 node_modules
